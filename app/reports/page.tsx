@@ -76,13 +76,13 @@ export default function ReportsPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#000000" }}>
+    <div className="min-h-screen bg-background">
       <Navbar />
       <div className="flex">
         <Sidebar />
-        <main className="flex-1 ml-64 p-6 flex flex-col gap-4" style={{ backgroundColor: "#000000" }}>
+        <main className="flex-1 ml-64 p-6 flex flex-col gap-4 bg-background">
           {isFirstTimeUser && (
-            <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+            <div className="fixed inset-0 z-50 bg-background/80 dark:bg-background/80 backdrop-blur-sm flex items-center justify-center">
               <CardContainer className="max-w-2xl w-full mx-4 relative">
                 <div className="mb-6">
                   <h2 className="text-2xl font-bold mb-2 text-[var(--color-neon-purple)] dark:text-[var(--color-neon-red)]">
@@ -133,22 +133,16 @@ export default function ReportsPage() {
                 className="w-full"
               >
                 <div 
-                  className="rounded-xl p-6 transition-all duration-300 relative"
-                  style={{
-                    backgroundColor: "#1A1A1A",
-                    border: "1px solid #FF0033",
-                    boxShadow: "0 0 20px rgba(255, 0, 51, 0.3)"
-                  }}
+                  className="rounded-xl p-6 transition-all duration-300 relative bg-card border border-[var(--color-neon-red)]/30 dark:border-[var(--color-neon-red)]/50 shadow-[0_0_20px_rgba(255,0,51,0.3)]"
                 >
                   <h1 
-                    className="text-2xl font-bold mb-6"
-                    style={{ color: "#FF0033" }}
+                    className="text-2xl font-bold mb-6 text-[var(--color-neon-red)]"
                   >
                     Your Collections
                   </h1>
 
                   <div className="mb-4">
-                    <h2 className="text-lg font-bold mb-4 text-white">Trending Edits</h2>
+                    <h2 className="text-lg font-bold mb-4 text-card-foreground">Trending Edits</h2>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -166,57 +160,34 @@ export default function ReportsPage() {
                       return (
                         <motion.div
                           key={report.id}
-                          className="cursor-pointer relative transition-all duration-300"
-                          style={{
-                            backgroundColor: "#282828",
-                            borderRadius: "12px",
-                            padding: "20px",
-                            boxShadow: isSelected 
-                              ? "0 0 0 2px #FF0033, 0 4px 12px rgba(0, 0, 0, 0.3)" 
-                              : "inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1)",
-                          }}
+                          className={`cursor-pointer relative transition-all duration-300 rounded-xl p-5 bg-card border-2 ${
+                            isSelected 
+                              ? "ring-2 ring-[var(--color-neon-red)] border-[var(--color-neon-red)]/60 dark:border-[var(--color-neon-red)]/70 shadow-[var(--shadow-card-hover-light),0_0_0_2px_var(--color-neon-red)] dark:shadow-[var(--shadow-card-hover-dark),0_0_0_2px_var(--color-neon-red)]" 
+                              : "border-border/80 dark:border-border/50 shadow-[var(--shadow-card-light)] dark:shadow-[var(--shadow-card-dark)] hover:shadow-[var(--shadow-card-hover-light)] dark:hover:shadow-[var(--shadow-card-hover-dark)] hover:border-[var(--color-neon-purple)]/40 dark:hover:border-[var(--color-neon-red)]/50"
+                          }`}
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                           onClick={() => setActiveCard(cardId)}
                         >
                           <h3 
-                            className="font-bold mb-1"
-                            style={{ 
-                              color: "#FFFFFF",
-                              fontSize: "1.1rem",
-                              fontWeight: 700
-                            }}
+                            className="font-bold mb-1 text-lg text-card-foreground"
                           >
                             {cardData.title}
                           </h3>
                           <p 
-                            className="mb-2"
-                            style={{ 
-                              color: "#B0B0B0",
-                              fontSize: "0.9rem",
-                              fontWeight: 400
-                            }}
+                            className="mb-2 text-sm text-muted-foreground"
                           >
                             {cardData.desc}
                           </p>
                           <p 
-                            className="text-xs"
-                            style={{ 
-                              color: "#888888",
-                              fontSize: "0.8rem",
-                              fontWeight: 400
-                            }}
+                            className="text-xs text-muted-foreground"
                           >
                             Generated {cardData.date}
                           </p>
                           {isSelected && cardData.id === "1" && (
                             <div className="mt-4">
                               <button
-                                className="w-full py-2 px-4 rounded-lg font-bold text-white transition-all duration-300"
-                                style={{
-                                  backgroundColor: "#8A2BE2",
-                                  boxShadow: "0 0 20px rgba(138, 43, 226, 0.6)"
-                                }}
+                                className="w-full py-2 px-4 rounded-lg font-bold text-white transition-all duration-300 bg-[var(--color-neon-purple)] dark:bg-[var(--color-neon-purple)] shadow-[0_0_20px_rgba(138,43,226,0.6)] hover:shadow-[0_0_25px_rgba(138,43,226,0.8)]"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   // Handle generate report

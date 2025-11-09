@@ -51,6 +51,12 @@
   /* Neomorphic Shadows */
   --shadow-neomorph-light: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
   --shadow-neomorph-dark: 5px 5px 10px #111, -5px -5px 10px #2a2a2a;
+  
+  /* Neon Card Shadows */
+  --shadow-card-light: 0 4px 12px rgba(0, 0, 0, 0.1), 0 0 8px rgba(196, 0, 255, 0.2);
+  --shadow-card-dark: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 8px rgba(255, 0, 64, 0.3);
+  --shadow-card-hover-light: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 12px rgba(196, 0, 255, 0.3);
+  --shadow-card-hover-dark: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 0, 64, 0.4);
 }
 
 :root {
@@ -144,6 +150,17 @@
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-poppins), system-ui, sans-serif;
+  }
+  /* Ensure main content areas always use theme-aware backgrounds */
+  main {
+    @apply bg-background;
+  }
+  /* Override any hardcoded dark backgrounds with theme-aware ones */
+  [style*="background-color: #000000"],
+  [style*="background-color:#000000"],
+  [style*="background-color: #000"],
+  [style*="background-color:#000"] {
+    background-color: var(--background) !important;
   }
 }
 

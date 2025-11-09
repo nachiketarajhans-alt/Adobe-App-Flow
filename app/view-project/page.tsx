@@ -80,13 +80,13 @@ export default function ViewProjectPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#000000" }}>
+    <div className="min-h-screen bg-background">
       <Navbar />
       <div className="flex">
         <Sidebar />
-        <main className="flex-1 ml-64 p-6 flex flex-col gap-4" style={{ backgroundColor: "#000000" }}>
+        <main className="flex-1 ml-64 p-6 flex flex-col gap-4 bg-background">
           {isFirstTimeUser && (
-            <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+            <div className="fixed inset-0 z-50 bg-background/80 dark:bg-background/80 backdrop-blur-sm flex items-center justify-center">
               <CardContainer className="max-w-2xl w-full mx-4 relative">
                 <div className="mb-6">
                   <h2 className="text-2xl font-bold mb-2 text-[var(--color-neon-purple)] dark:text-[var(--color-neon-red)]">
@@ -195,14 +195,13 @@ export default function ViewProjectPage() {
                           className="relative"
                         >
                           <div
-                            className="bg-[#2C2C2C] dark:bg-[#1A1A1A] rounded-2xl overflow-hidden shadow-lg transition-all duration-300 cursor-pointer hover:scale-[1.02] relative"
+                            className="bg-card rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer hover:scale-[1.02] relative border-2 border-border/80 dark:border-border/50 shadow-[var(--shadow-card-light)] dark:shadow-[var(--shadow-card-dark)] hover:shadow-[var(--shadow-card-hover-light)] dark:hover:shadow-[var(--shadow-card-hover-dark)] hover:border-[var(--color-neon-purple)]/40 dark:hover:border-[var(--color-neon-red)]/50"
                             style={{ borderRadius: "16px" }}
                           >
                             {/* Top Visual Area - Red Maroon Background */}
                             <div 
-                              className="w-full h-48 flex items-center justify-center relative"
+                              className="w-full h-48 flex items-center justify-center relative bg-[#4A0000] dark:bg-[#6A0000]"
                               style={{ 
-                                backgroundColor: "#4A0000",
                                 borderTopLeftRadius: "16px",
                                 borderTopRightRadius: "16px"
                               }}
@@ -210,33 +209,32 @@ export default function ViewProjectPage() {
                               <div className="text-6xl">{projectEmoji}</div>
                             </div>
                             
-                            {/* Content Area - Dark Gray Background */}
-                            <div className="p-4 bg-[#2C2C2C] dark:bg-[#1A1A1A]">
+                            {/* Content Area - Theme-aware Background */}
+                            <div className="p-4 bg-card">
                               {/* Project Title */}
-                              <h3 className="text-lg font-bold text-white mb-1 flex items-center gap-2">
+                              <h3 className="text-lg font-bold text-card-foreground mb-1 flex items-center gap-2">
                                 <span>{project.name} {projectEmoji}</span>
                               </h3>
                               
                               {/* Description */}
-                              <p className="text-sm text-gray-300 dark:text-gray-400 mb-3 mt-1">
+                              <p className="text-sm text-muted-foreground mb-3 mt-1">
                                 {project.description}
                               </p>
                               
                               {/* Progress Section */}
                               <div className="mt-3">
                                 <div className="flex items-center gap-2 mb-1">
-                                  <div className="flex-1 h-2 bg-[#444444] rounded-full overflow-hidden">
+                                  <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
                                     <motion.div
-                                      className="h-full rounded-full transition-all"
-                                      style={{ backgroundColor: "#FF0033" }}
+                                      className="h-full rounded-full transition-all bg-[var(--color-neon-red)]"
                                       initial={{ width: 0 }}
                                       animate={{ width: `${project.progress}%` }}
                                       transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
                                     />
                                   </div>
-                                  <span className="text-xs text-white font-normal whitespace-nowrap">{project.progress}%</span>
+                                  <span className="text-xs text-card-foreground font-normal whitespace-nowrap">{project.progress}%</span>
                                 </div>
-                                <span className="text-xs text-white font-normal mt-1 block">
+                                <span className="text-xs text-muted-foreground font-normal mt-1 block">
                                   {project.tasks} edits done
                                 </span>
                               </div>
