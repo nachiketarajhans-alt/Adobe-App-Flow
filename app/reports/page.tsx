@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Modal } from "@/components/ui/modal";
 import { useUser } from "@/contexts/user-context";
-import { FileText, TrendingUp, BarChart3, TrendingDown } from "lucide-react";
+import { FileText, TrendingUp, BarChart3, TrendingDown, Share2, Download } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import * as React from "react";
@@ -287,6 +287,34 @@ export default function ReportsPage() {
                         </div>
                       </div>
                     )}
+                    
+                    {/* Share and Download Buttons */}
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.25, ease: 'easeOut' }}
+                      className="flex justify-center gap-3 mt-6"
+                    >
+                      {/* Share Button */}
+                      <button
+                        data-slot="button"
+                        className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 active:scale-95 disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:ring-[3px] focus-visible:ring-[var(--color-neon-purple)]/50 dark:focus-visible:ring-[var(--color-neon-red)]/50 bg-[var(--color-bg-light)] dark:bg-[var(--color-bg-dark)] text-[var(--color-neon-purple)] dark:text-[var(--color-neon-red)] shadow-[var(--shadow-neomorph-light)] dark:shadow-[var(--shadow-neomorph-dark)] hover:shadow-[0_0_10px_var(--color-neon-purple)] dark:hover:shadow-[0_0_10px_var(--color-neon-red)] h-9 px-4 py-2"
+                        onClick={() => alert("Share feature coming soon 🚀")}
+                      >
+                        <Share2 className="w-4 h-4" />
+                        Share
+                      </button>
+
+                      {/* Download Button */}
+                      <button
+                        data-slot="button"
+                        className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 active:scale-95 disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:ring-[3px] focus-visible:ring-[var(--color-neon-purple)]/50 dark:focus-visible:ring-[var(--color-neon-red)]/50 bg-[var(--color-bg-light)] dark:bg-[var(--color-bg-dark)] text-[var(--color-neon-purple)] dark:text-[var(--color-neon-red)] shadow-[var(--shadow-neomorph-light)] dark:shadow-[var(--shadow-neomorph-dark)] hover:shadow-[0_0_10px_var(--color-neon-purple)] dark:hover:shadow-[0_0_10px_var(--color-neon-red)] h-9 px-4 py-2"
+                        onClick={() => alert("Download started ⚡")}
+                      >
+                        <Download className="w-4 h-4" />
+                        Download
+                      </button>
+                    </motion.div>
                   </div>
                 </Modal>
               </motion.div>
